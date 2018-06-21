@@ -81,6 +81,7 @@ var Engine = (function(global) {
         updateEntities(dt);
         checkCollisions();
     }
+    // 2D collision from MDN
     function checkCollisions() {
        allEnemies.forEach(function (enemy) {
             if (player.x < enemy.x + 75 &&
