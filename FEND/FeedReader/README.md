@@ -1,7 +1,8 @@
 # Feed Reader
 Wrote tests for the Feed Reader app using [Jasmine](https://jasmine.github.io/).
 
-I publicly hosted this test; you can simply view it [here](https://gizemny.github.io/FEND/FeedReader/?).
+# How to run this test
+It is publically hosted and you can simply view it [here](https://gizemny.github.io/FEND/FeedReader/?){:target="_blank"}.
 
 # How to run the this locally
 ### Option 1:
