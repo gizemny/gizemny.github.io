@@ -1,5 +1,5 @@
-# Feed Reader Testing Project
-Testing the Feed Reader app using Javascript testing framework Jasmine.
+# Feed Reader
+Wrote tests for the Feed Reader app using [Jasmine](https://jasmine.github.io/).
 
 ### Option 1:
 - Click "Clone in Desktop" / "Download ZIP"
