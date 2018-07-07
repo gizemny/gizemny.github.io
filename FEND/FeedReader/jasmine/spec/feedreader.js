@@ -7,17 +7,17 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-        it('have a URL', function () {
+        it('have a URL', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
-                expect(feed.length).not.toBe(0);
+                expect(feed.url.length).not.toBe(0);
             });
         });
 
         it('have a name', function() {
             allFeeds.forEach(function (feed) {
                 expect(feed.name).toBeDefined();
-                expect(feed.length).not.toBe(0);
+                expect(feed.name.length).not.toBe(0);
             });
         });
     });
@@ -27,50 +27,49 @@ $(function() {
             menuIcon = $('.menu-icon-link');
 
         it('should be hidden by default', function () {
-
             expect(body.hasClass('menu-hidden')).toBe(true);
         });
 
         it('toggles when menu icon is clicked', function () {
             if (menuIcon.click()){
-                expect(menuIcon.attr('class')).not.toEqual('menu-hidden');
+                expect(body.hasClass('menu-hidden')).toBe(false);
             }
         });
-
     });
 
-	describe('Initial Entries', function () {
- 
-        beforeEach(function (done) {
-                        loadFeed(function () {
-                            done();
-                        });
-                    });
-                });
+	describe('Initial Entries', function() {
 
-                it('should contain at least a single entry', function (done) {
-                        var container = $('.feed');
-                        expect(container.length).not.toBe(0);
-                        done();
-                });
+		var entry;
 
-	describe('New Feed Selection', function () {
+        beforeEach(function(done) {
+			loadFeed(0, function() {
+				done();
+			});
+		});
+
+		it('should contain at least a single entry', function() {
+			entry = $('.feed .entry');
+			expect(entry.length).toBeGreaterThan(0);
+		});
+	});
+
+	describe('New Feed Selection', function() {
 
         var oldContent;
 
-        beforeEach(function (done) {
-                loadFeed(0, function () {
-                    oldContent = $('.feed');
-                    
-                        loadFeed(1, function () {
-                        done();
-                    });
-                });
-            });
+        beforeEach(function(done) {
+			loadFeed(0, function () {
+				oldContent = $('.feed').html();
+				loadFeed(1, function () {
+					done();
+				});
+			});
+		});
 
         it('should change the content on load', function() {
-            var newContent = $('.feed');
+            var newContent = $('.feed').html();
             expect(newContent).not.toBe(oldContent);
         });
-    });
+	});
+		
 }());
