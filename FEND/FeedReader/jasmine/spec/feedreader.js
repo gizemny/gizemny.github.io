@@ -31,9 +31,12 @@ $(function() {
         });
 
         it('toggles when menu icon is clicked', function () {
-            if (menuIcon.click()){
-                expect(body.hasClass('menu-hidden')).toBe(false);
-            }
+			menuIcon.click();
+            expect(body.hasClass('menu-hidden')).toBe(false);
+			
+			menuIcon.click(); 
+			expect(body.hasClass('menu-hidden')).toBe(true);
+
         });
     });
 
