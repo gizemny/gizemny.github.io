@@ -151,14 +151,14 @@ nav h1 a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1 0 200px;
+  /* flex: 0 0 200px; */
   background-color: #fff;
   border: 2px solid #ccc;
   box-sizing: border-box;
   font-family: Arial,sans-serif;
   margin: 5px;
   min-height: 380px;
-  width: calc(32% - 24px);
+  width: calc(34% - 24px);
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -308,7 +308,7 @@ nav h1 a {
 @media screen and (min-device-width: 370px) and (max-device-width: 576px) {
   /* home */
   #restaurants-list li {
-    flex: 1 0 400px;
+    flex: 1 0 300px;
   }
 
 }
