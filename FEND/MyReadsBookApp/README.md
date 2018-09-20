@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Install all project dependencies with `npm install`
 * Start the development server with `npm start`
 
-## What You're Getting
+## Project Details
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
