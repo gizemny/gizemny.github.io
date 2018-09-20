@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import SearchPage from './SearchPage'
-import MainPage from './MainPage'
+import SearchPage from './components/SearchPage'
+import MainPage from './components/MainPage'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -16,6 +16,7 @@ class BooksApp extends React.Component {
       this.setState({ books: books })
     })
   }
+
   componentDidMount() {
     this.fetchBooks()
   }
