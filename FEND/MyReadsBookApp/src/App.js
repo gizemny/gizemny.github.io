@@ -6,40 +6,38 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class BooksApp extends React.Component {
-  
   state = {
     books: []
   }
 
-  // fetchBooks = () => {
-  //   BooksAPI.getAll().then((books) => {
-  //     this.setState({ books: books })
-  //   })
-  // }
-
+  // fetch data from api once elements render
   componentDidMount() {
-    // this.fetchBooks()
+    this.getMyBooks()
+  }
+
+  getMyBooks = () => {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books: books })
+      this.setState({ books })
     })
   }
 
+  //fetch from api after changing shelf
   moveShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
-    // this.fetchBooks()
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books: books })
-    })
+    this.getMyBooks()
   }
 
   render() {
+    const {books,shelf} = this.state;
+
     return (
       <div className="app">
         <Route 
           exact path="/" 
           render={() => (
             <MainPage 
-              books={this.state.books}
+              books={books}
+              shelf={shelf}
               moveShelf={this.moveShelf}
             />
           )}
@@ -48,7 +46,7 @@ class BooksApp extends React.Component {
           path="/search" 
           render={() => (
             <SearchPage 
-              books={this.state.books}
+              books={books}
               moveShelf={this.moveShelf}
             />
           )}
