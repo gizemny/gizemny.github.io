@@ -11,5 +11,7 @@ Backend was provided & project uses [`BooksAPI.js`](src/BooksAPI.js) which conta
 
 ## Resources
 [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+
 [Study Jams](https://www.youtube.com/watch?v=i6L2jLHV9j8)
+
 [Project Rubric](https://review.udacity.com/#!/rubrics/918/view)
