@@ -1,35 +1,35 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import SearchPage from './components/SearchPage'
-import MainPage from './components/MainPage'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import SearchPage from './components/SearchPage';
+import MainPage from './components/MainPage';
+import * as BooksAPI from './BooksAPI';
+import './App.css';
 
 class BooksApp extends React.Component {
   state = {
     books: []
   }
 
-  // fetch data from api once elements render
+  //fetch data from api once elements render
   componentDidMount() {
-    this.getMyBooks()
+    this.getMyBooks();
   }
 
   getMyBooks = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
+    });
+  }
+
+  //update shelf after change & fetch again
+  moveShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(() => {
+     this.getMyBooks()
     })
   }
 
-  //fetch from api after changing shelf
-  moveShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf)
-    this.getMyBooks()
-  }
-
   render() {
-    const {books,shelf} = this.state;
-
+    const {books} = this.state;
     return (
       <div className="app">
         <Route 
@@ -37,7 +37,6 @@ class BooksApp extends React.Component {
           render={() => (
             <MainPage 
               books={books}
-              shelf={shelf}
               moveShelf={this.moveShelf}
             />
           )}
