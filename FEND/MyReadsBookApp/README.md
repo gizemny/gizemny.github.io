@@ -1,5 +1,4 @@
 # MyReads Project
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). I used the starter code provided by Udacity and added interactivity to the app by refactoring the static code.
 
 ## To view
@@ -7,40 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Install all project dependencies with `npm install`
 * Start the development server with `npm start`
 
-## Project Details
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── components # Helpful images for your app. Use at your discretion.
-    │   ├── Book.js # Handles individual books
-    │   ├── MainPage.js # Shelves and placing books in shelves
-    │   └── SearchPage.js # Handles the search page
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-```
-
 ## Backend Server
-
-Backend was provided & project uses [`BooksAPI.js`](src/BooksAPI.js) which contains the methods to perform necessary operations on the backend. 
-
-## Important
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
+Backend was provided & project uses [`BooksAPI.js`](src/BooksAPI.js) which contains the methods to perform necessary operations. The API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
 ## Resources
 [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+
 [Study Jams](https://www.youtube.com/watch?v=i6L2jLHV9j8)
+
 [Project Rubric](https://review.udacity.com/#!/rubrics/918/view)
