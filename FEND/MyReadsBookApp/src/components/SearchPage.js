@@ -32,7 +32,7 @@ class SearchPage extends Component {
 		const {books, moveShelf} = this.props;
 
 		return (
-				<div className="search-books">
+			<div className="search-books">
 				<div className="search-books-bar">
 					<Link className="close-search" to='/'>Close</Link>
 					<div className="search-books-input-wrapper">
@@ -45,28 +45,28 @@ class SearchPage extends Component {
 					</div>
 				</div>
 				<div className="search-books-results">
-				{(searchedBooks.length===0) ? (
-					<p>No results</p>
-					) : (
-					<ol className="books-grid">
-						{searchedBooks.map(searchedBook => {
-							let shelf = 'none'
-							books.map(book => (
-								book.id === searchedBook.id ?
-								shelf = book.shelf 
-								: ' ' 
-							))
-							return (
-								<li key={searchedBook.id}>
-									<Book 
-										book={searchedBook}
-										moveShelf={moveShelf}
-										currentShelf={shelf}
-									/>
-								</li>
+					{(searchedBooks.length===0) ? (
+						<p>No results</p>
+						) : (
+						<ol className="books-grid">
+							{searchedBooks.map(searchedBook => {
+								let shelf = 'none'
+								books.map(book => (
+									book.id === searchedBook.id ?
+									shelf = book.shelf 
+									: ' ' 
+								))
+								return (
+									<li key={searchedBook.id}>
+										<Book 
+											book={searchedBook}
+											moveShelf={moveShelf}
+											currentShelf={shelf}
+										/>
+									</li>
+								)}
 							)}
-						)}
-					</ol>
+						</ol>
 					)}
 				</div>
 			</div>

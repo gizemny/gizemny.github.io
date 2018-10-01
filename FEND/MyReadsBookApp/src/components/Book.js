@@ -4,6 +4,7 @@ import React from 'react';
 const Book = ( { book, currentShelf, moveShelf } ) => {
 	// ternary to check if book has thumbnail img
 	let bookThumbnail = book.imageLinks ? book.imageLinks.thumbnail : '';
+
 	return (
 		<div className="book">
 			<div className="book-top">
@@ -29,7 +30,6 @@ const Book = ( { book, currentShelf, moveShelf } ) => {
 			<div className="book-authors">{book.authors}</div>
 		</div>
 	);
-	
 }
 
 export default Book;
