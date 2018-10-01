@@ -2,7 +2,7 @@ import React from 'react';
 import Book from './Book'
 
 // functional stateless components
-const Shelf = ({books, moveShelf, shelf, shelves}) => {	
+const Shelf = ({books, moveShelf, shelf}) => {	
 
   const individualBook = books.map(book => (
     <li key={book.id}>

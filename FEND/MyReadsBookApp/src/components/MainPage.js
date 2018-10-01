@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 
 // functional stateless component
 const MainPage = ({books, moveShelf}) => {	
-	//https://thinkster.io/tutorials/iterating-and-rendering-loops-in-react
-	// create an object and iterate to create each shelf via evaluation to find books that match
+	// create an object and iterate through books, render each shelf by using an evaluation to find books that match
 	const shelves = {
 		currentlyReading: {
 		  name: 'Currently Reading',
@@ -21,9 +20,10 @@ const MainPage = ({books, moveShelf}) => {
 		}
 	};
 
-	for (let shelvedBook of books) { //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty iterate through each book and check if shelves and book has a property that matches. call() method accepts multiple arguments and assigns the value individually
-		if (Object.prototype.hasOwnProperty.call(shelves, shelvedBook.shelf))
-			shelves[shelvedBook.shelf].book.push(shelvedBook)
+	for (let bookOnShelf of books) { //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty iterate through books and check if shelves and book shelf has a property that matches. use external hasOwnProperty to get correct results; call() method accepts multiple arguments and assigns the value individually
+		if (Object.prototype.hasOwnProperty.call(shelves, bookOnShelf.shelf))
+			console.log(bookOnShelf.shelf)
+			shelves[bookOnShelf.shelf].book.push(bookOnShelf)
 	};
 
 	const eachShelf = Object.keys(shelves).map((shelf) =>
