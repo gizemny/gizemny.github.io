@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 // functional stateless component
 const MainPage = ({books, moveShelf}) => {	
-	// create an object and iterate through books, render each shelf by using an evaluation to find books that match
-	const shelves = {
+	// create an object and iterate through books, render each shelf by using an evaluation to find and place books that match
+	const allShelves = {
 		currentlyReading: {
 		  name: 'Currently Reading',
 		  book: []
@@ -20,19 +20,24 @@ const MainPage = ({books, moveShelf}) => {
 		}
 	};
 
-	for (let bookOnShelf of books) { //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty iterate through books and check if shelves and book shelf has a property that matches. use external hasOwnProperty to get correct results; call() method accepts multiple arguments and assigns the value individually
-		if (Object.prototype.hasOwnProperty.call(shelves, bookOnShelf.shelf))
-			console.log(bookOnShelf.shelf)
-			shelves[bookOnShelf.shelf].book.push(bookOnShelf)
+	//https://toddmotto.com/methods-to-determine-if-an-object-has-a-given-property/
+	for (let bookOnShelf of books) { 
+		function hasProp(obj, prop) {
+		  return Object.prototype.hasOwnProperty.call(obj, prop);
+		}
+		if (hasProp(allShelves, bookOnShelf.shelf))
+			allShelves[bookOnShelf.shelf]
+			.book.push(bookOnShelf)
 	};
 
-	const eachShelf = Object.keys(shelves).map((shelf) =>
-		// Each child in iterator should have a unique "key" prop https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js 
+	//https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js
+	const eachShelf = Object.keys(allShelves).map((shelf) =>
+		// Create new shelf array and place all books from the allShelves object into the corresponding shelf; each child in the iterator should have a unique "key" prop 
 		<Shelf 
-		key={shelf}
-		shelf={shelves[shelf].name}
-		books={shelves[shelf].book}
-		moveShelf={moveShelf} 
+			key={shelf}
+			shelf={allShelves[shelf].name}
+			books={allShelves[shelf].book}
+			moveShelf={moveShelf} 
 		/>
 	);
 
