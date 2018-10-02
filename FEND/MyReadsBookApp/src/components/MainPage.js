@@ -31,7 +31,7 @@ const MainPage = ({books, updateShelf}) => {
 	};
 
 	const eachShelf = Object.keys(allShelves).map((shelf, index) =>
-		// refactored to make return simpler; map object to assign info about each shelf; each child in the iterator should have a unique "key". 
+		// map object to assign info about each shelf; each child in the iterator should have a unique "key"
 		<Shelf 
 			key={index}
 			shelf={allShelves[shelf].name}
