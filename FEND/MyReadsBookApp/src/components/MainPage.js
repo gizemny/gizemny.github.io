@@ -30,10 +30,10 @@ const MainPage = ({books, updateShelf}) => {
 			allShelves[matched.shelf].books.push(matched)
 	};
 
-	const eachShelf = Object.keys(allShelves).map((shelf, index) =>
-		// map object to assign info about each shelf; each child in the iterator should have a unique "key"
+	const eachShelf = Object.keys(allShelves).map((shelf, i) =>
+		// https://stackoverflow.com/questions/40803828/reactjs-map-through-object map object to assign info about each shelf; each child in the iterator should have a unique "key"
 		<Shelf 
-			key={index}
+			key={i}
 			shelf={allShelves[shelf].name}
 			books={allShelves[shelf].books}
 			updateShelf={updateShelf} 
