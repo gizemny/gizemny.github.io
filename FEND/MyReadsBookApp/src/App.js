@@ -22,7 +22,7 @@ class BooksApp extends React.Component {
   }
 
   //update shelf after change & fetch again
-  moveShelf = (book, shelf) => {
+  updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
      this.getMyBooks()
     })
@@ -37,7 +37,7 @@ class BooksApp extends React.Component {
           render={() => (
             <MainPage 
               books={books}
-              moveShelf={this.moveShelf}
+              updateShelf={this.updateShelf}
             />
           )}
         />
@@ -46,7 +46,7 @@ class BooksApp extends React.Component {
           render={() => (
             <SearchPage 
               books={books}
-              moveShelf={this.moveShelf}
+              updateShelf={this.updateShelf}
             />
           )}
         />

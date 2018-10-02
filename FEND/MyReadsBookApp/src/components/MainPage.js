@@ -3,41 +3,40 @@ import Shelf from './Shelf';
 import { Link } from 'react-router-dom';
 
 // functional stateless component
-const MainPage = ({books, moveShelf}) => {	
-	// create an object and iterate through books, render each shelf by using an evaluation to find and place books that match
+const MainPage = ({books, updateShelf}) => {	
+	// create an object containing shelves with a name and an empty array of books to be placed on each shelf
 	const allShelves = {
 		currentlyReading: {
 		  name: 'Currently Reading',
-		  book: []
+		  books: []
 		},
 		wantToRead: {
 		  name: 'Want to Read',
-		  book: []
+		  books: []
 		},
 		read: {
 		  name: 'Read',
-		  book: []
+		  books: []
 		}
 	};
 
-	//https://toddmotto.com/methods-to-determine-if-an-object-has-a-given-property/
+	//https://toddmotto.com/methods-to-determine-if-an-object-has-a-given-property/ iterate through books & use simple helper function to find any books that match a property in the object and place them in appropriate shelf's book array 
 	for (let bookOnShelf of books) { 
 		function hasProp(obj, prop) {
 		  return Object.prototype.hasOwnProperty.call(obj, prop);
 		}
 		if (hasProp(allShelves, bookOnShelf.shelf))
 			allShelves[bookOnShelf.shelf]
-			.book.push(bookOnShelf)
+			.books.push(bookOnShelf)
 	};
 
-	//https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js
-	const eachShelf = Object.keys(allShelves).map((shelf) =>
-		// Create new shelf array and place all books from the allShelves object into the corresponding shelf; each child in the iterator should have a unique "key" prop 
+	const eachShelf = Object.keys(allShelves).map((shelf, index) =>
+		// refactored to make return simpler; map object to assign info about each shelf; each child in the iterator should have a unique "key". 
 		<Shelf 
-			key={shelf}
+			key={index}
 			shelf={allShelves[shelf].name}
-			books={allShelves[shelf].book}
-			moveShelf={moveShelf} 
+			books={allShelves[shelf].books}
+			updateShelf={updateShelf} 
 		/>
 	);
 

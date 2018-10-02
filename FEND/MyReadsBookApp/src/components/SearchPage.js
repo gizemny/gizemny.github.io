@@ -29,7 +29,7 @@ class SearchPage extends Component {
 	render(){
 		// destructure repeating code
 		const {query, searchedBooks} = this.state;
-		const {books, moveShelf} = this.props;
+		const {books, updateShelf} = this.props;
 
 		return (
 			<div className="search-books">
@@ -60,7 +60,7 @@ class SearchPage extends Component {
 									<li key={searchedBook.id}>
 										<Book 
 											book={searchedBook}
-											moveShelf={moveShelf}
+											updateShelf={updateShelf}
 											currentShelf={shelf}
 										/>
 									</li>

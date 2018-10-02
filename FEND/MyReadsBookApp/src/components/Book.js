@@ -1,9 +1,9 @@
 import React from 'react';
 
 // functional stateless component
-const Book = ( { book, currentShelf, moveShelf } ) => {
+const Book = ({book, currentShelf, updateShelf}) => {
 	// ternary to check if book has thumbnail img
-	let bookThumbnail = book.imageLinks ? book.imageLinks.thumbnail : '';
+	let bookImage = book.imageLinks ? book.imageLinks.thumbnail : '';
 
 	return (
 		<div className="book">
@@ -13,10 +13,10 @@ const Book = ( { book, currentShelf, moveShelf } ) => {
 					style={{ 
 						width: 128, 
 						height: 193, 
-						backgroundImage: `url(${bookThumbnail})` }}>
+						backgroundImage: `url(${bookImage})` }}>
 				</div>
 				<div className="book-shelf-changer">
-					<select onChange={ (event) => moveShelf(book, event.target.value)}
+					<select onChange={ (event) => updateShelf(book, event.target.value)}
 						value={currentShelf}>
 						<option value="move" disabled>Move to...</option>
 						<option value="currentlyReading">Currently Reading</option>
