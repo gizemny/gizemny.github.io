@@ -20,14 +20,14 @@ const MainPage = ({books, updateShelf}) => {
 		}
 	};
 
-	//https://toddmotto.com/methods-to-determine-if-an-object-has-a-given-property/ iterate through books & use simple helper function to find any books that match a property in the object and place them in appropriate shelf's book array 
-	for (let bookOnShelf of books) { 
+	//https://toddmotto.com/methods-to-determine-if-an-object-has-a-given-property/ iterate through books & use simple helper function to find any books that match a property in the object and 
+	for (let matched of books) { 
 		function hasProp(obj, prop) {
 		  return Object.prototype.hasOwnProperty.call(obj, prop);
 		}
-		if (hasProp(allShelves, bookOnShelf.shelf))
-			allShelves[bookOnShelf.shelf]
-			.books.push(bookOnShelf)
+		if (hasProp(allShelves, matched.shelf))
+		// get shelf of matched book; place matched books in the corresponding shelf
+			allShelves[matched.shelf].books.push(matched)
 	};
 
 	const eachShelf = Object.keys(allShelves).map((shelf, index) =>
