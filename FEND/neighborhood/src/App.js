@@ -23,7 +23,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      venues: [],
       markers: [],
       showingInfoWindow: false,
       activeMarker: {},
@@ -40,28 +40,31 @@ class App extends Component {
     foursquare.venues.getVenues(params)
       .then(res => {
         this.setState({
-          items: res.response.venues
+          venues: res.response.venues,
+          markers: res.response.venues
         });
       });
   }
   
   showMarkers() {
-    this.state.items.map(item => {
-      return {
-        lat: item.location.lat,
-        lng: item.location.lng
+    this.state.venues.map(venue => {
+        return {
+        lat: venue.location.lat,
+        lng: venue.location.lng
       }
     })
+    
   }
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
-    });
+    }
+  );
 
-  onMapClicked = (props) => {
+  onMapClicked = () => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -69,24 +72,33 @@ class App extends Component {
       })
     }
   };
-
-
+  
+  listItemClick = (venue) => {
+    const marker = this.state.markers.find(marker => marker.id === venue.id);
+    this.onMarkerClick(marker);
+  }
+  
   render() {
+    
     return (
-      <div className="wrapper">
+      <div className="wrapper" style={{ height: '100vh', width: '100%' }}>
 
       <input id="hamburger" type="checkbox" className="hamburger-checkbox"></input>
       <label htmlFor="hamburger" className="hamburger-label" role="button" aria-labelledby="menu">&#xf0c9;</label>
       
       <div role="navigation" className="sidebar">
         <ul className="places"> 
-          {
-            this.state.items.map(item => {
-                return <li key={item.id}>
-                {item.name}
-                </li>
-              })
-            }
+          {this.state.venues.map((venue, idx) => {
+            return <li key={idx} 
+                       onClick={()=>this.listItemClick(venue)}>
+                <img src={
+                  venue.categories[0].icon.prefix + "32" + 
+                  venue.categories[0].icon.suffix
+                } alt="Venue category icon"/>
+                {venue.name}
+              </li>
+            })
+          }
         </ul>
       </div>
 
@@ -97,22 +109,21 @@ class App extends Component {
           onClick={this.onMapClicked}
           initialCenter={this.state.center}
           zoom={this.state.zoom}
-          center={this.state.center} >
-          {
-            this.state.items.map((item, i) => ( 
+          center={this.state.center}>
+          {this.state.markers.map((marker,idx) => ( 
             <Marker 
+              key={idx}
               onClick={this.onMarkerClick}
-              key={item.id}
-              title={item.name}
-              name={item.name}
+              title={marker.title}
+              name={marker.name}
               position = {
                 {
-                  lat: item.location.lat,
-                  lng: item.location.lng
+                  lat: marker.location.lat,
+                  lng: marker.location.lng
                 }
               }
             />
-          ))}  
+          ))}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
