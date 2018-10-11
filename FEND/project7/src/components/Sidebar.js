@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VenueList from './VenueList';
+import { slide as Menu } from 'react-burger-menu'
 
 export default class Sidebar extends Component {
   constructor() {
@@ -13,14 +14,13 @@ export default class Sidebar extends Component {
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
   // if query is empty, show all, else return only the ones that match the query
   filterVenues = () => {
-    if (this.state.query.trim() !== '') {
-       return this.props.venues;
-      } else {
+    if (this.state.query.trim() !== '') {      
       const venues = this.props.venues.filter(venue => 
         venue.name.toLowerCase().includes(this.state.query.toLowerCase())
       );
         return venues
       }
+    return this.props.venues;
   };
 
   //Helper function; generic handleChange 
@@ -29,6 +29,7 @@ export default class Sidebar extends Component {
     if (e.target.value === '') {
       console.log('no results');
     }
+
     // if query matches a venue, show the corresponding marker
     const markers = this.props.venues.map(venue => {
       const isMatched = venue.name
@@ -45,9 +46,20 @@ export default class Sidebar extends Component {
 
   render() {
     return (
-      <div className='sideBar'>
-        <input id="hamburger" type="checkbox" className="hamburgerCheckbox"></input>
-        <label htmlFor="hamburger" className="hamburgerLabel" role="button" aria-labelledby="menu">&#xf0c9;</label>
+      // <div className='sideBar'>
+      //   <input id="hamburger" type="checkbox" className="hamburgerCheckbox"></input>
+      //   <label htmlFor="hamburger" className="hamburgerLabel" role="button" aria-labelledby="menu">&#xf0c9;</label>
+      //   <input 
+      //     type={'search'} 
+      //     id={'search'} 
+      //     placeholder={'Filter restaurants'}
+      //     onChange={this.handleChange}/>
+      //   <VenueList 
+      //     {...this.props} 
+      //     venues={this.filterVenues()}
+      //     onListItemClick={this.props.onListItemClick}/>
+      // </div>
+      <Menu>
         <input 
           type={'search'} 
           id={'search'} 
@@ -57,7 +69,7 @@ export default class Sidebar extends Component {
           {...this.props} 
           venues={this.filterVenues()}
           onListItemClick={this.props.onListItemClick}/>
-      </div>
+      </Menu>
     );
   }
 }

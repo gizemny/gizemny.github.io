@@ -4,10 +4,10 @@
   /* width: 600vw; */
   display: flex;
   font-size: 15px;
-  flex: 1;
+  /* flex: 1; */
 }
 
-.sideBar {
+/* .sideBar {
   background: #444;
   color: #eee;
   padding-top:4em;
@@ -98,7 +98,7 @@ input#search {
   margin: 5px 0;
   display: inline;
   overflow: scroll;
-}
+} */
 
 .gm-style-mtc {
   display: none;
@@ -115,4 +115,84 @@ input#search {
   .sideBar {
     overflow: hidden
   } */
+}
+
+input#search {
+   border: 5px solid white;
+   -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
+   0 0 16px rgba(0, 0, 0, 0.1);
+   -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
+   0 0 16px rgba(0, 0, 0, 0.1);
+   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
+   0 0 16px rgba(0, 0, 0, 0.1);
+   padding: 15px;
+   background: rgba(255, 255, 255, 0.89);
+   margin: 60px 30px 0;
+   width: 80%;
+}
+
+.venueList {
+  /* width: 0; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  list-style: none;
+  margin: 5px;
+  padding: 20px;
+  color: #fff;
+}
+
+.listItem {
+  border: 1px solid lightgrey;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* ------- */
+/*-----burger menu, reference https://www.npmjs.com/package/react-burger-menu ------*/
+.bm-burger-button {
+  position: fixed;
+  width: 35px;
+  height: 30px;
+  left: 30px;
+  top: 3vh;
+}
+
+.bm-burger-bars {
+  background: #3b3e49;
+}
+
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 25px;
+  width: 25px;
+  margin: 10px 10px 3px 0;
+  padding: 15px;
+
+}
+
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #fff;
+}
+
+.bm-menu {
+  background: #444;
+  font-size: 1.3em;
+}
+
+
+.bm-item-list {
+  margin: auto;
+  text-align: left;
+}
+
+/* list item */
+.bm-item {
+  display: inline-block;
+  margin: 0px;
 }

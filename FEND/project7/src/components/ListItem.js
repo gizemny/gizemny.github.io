@@ -14,7 +14,6 @@ export default class ListItem extends Component {
           alt="Venue category icon"/>
       {this.props.name}
       {/* <img alt="venue" src={`${this.props.bestPhoto.prefix}200x200${this.props.bestPhoto.suffix}`}/> */}
-      <p>{this.props.location.formattedAddress}</p>
       </li>
     );
   }
