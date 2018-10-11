@@ -39,7 +39,6 @@ input#search {
   padding: 3px;
   margin: 5px;
   cursor: pointer;
-  width: 58%;
 }
 
 .listItem:hover {
@@ -53,8 +52,8 @@ input#search {
 
 .hamburgerLabel {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 5px;
+  left: 5px;
   z-index: 1;
   display: block;
   width: 42px;
@@ -79,28 +78,22 @@ input#search {
   color: #eee;
 
 }
-.main {
-  flex: 1;
-}
 
 .hamburgerCheckbox:checked~.venueList {
-  width: 400px;
+  width: 100%;
   transition: all .3s;
 }
 
 .hamburgerCheckbox:checked~.sideBar {
-  /* width: 100%; */
-  /* min-width: 400px; */
+  width: 100%;
 }
-
-
 
 .hamburgerCheckbox:checked~input#search {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-  font-size: 18px;
+  font-size: 16px;
   padding: 0px 10px;
   margin: 5px 0;
   display: inline;
@@ -112,7 +105,7 @@ input#search {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .hamburgerCheckbox:checked~.venueList {
+  /* .hamburgerCheckbox:checked~.venueList {
     width: 600px;
     transition: all .3s;
   }
@@ -121,5 +114,5 @@ input#search {
   }
   .sideBar {
     overflow: hidden
-  }
+  } */
 }
