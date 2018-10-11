@@ -1,1 +1,4 @@
 .DS_Store
+FEND/MyReadsBookApp/package-lock.json
+node_modules/
+package-lock.json
