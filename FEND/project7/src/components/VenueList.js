@@ -10,9 +10,9 @@ export default class VenueList extends Component {
             <ListItem 
             key={idx} 
             {...venue} 
-            onListItemClick={this.props.onListItemClick}
-      />
-        ))}
+            onListItemClick={this.props.onListItemClick}/>
+          ))
+        }
       </ul>
     );
   }

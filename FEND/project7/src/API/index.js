@@ -45,7 +45,12 @@ class Helper {
     urlPrams
     )}`, 
     requestData
-    ).then(res => res.json());
+    ).then(res => res.json())
+    .catch(error => {
+      alert(
+        'Encountered an error while trying to fetch data from Foursquare' + error
+      );
+    });
   }
 }
 
@@ -56,9 +61,5 @@ export default class SquareAPI {
 
   static getVenueDetails(VENUE_ID){
     return Helper.simpleFetch(`/venues/${VENUE_ID}`, 'GET')
-  }
-  
-  static getVenuePhotos(VENUE_ID) {
-    return Helper.simpleFetch(`/venues/${VENUE_ID}/photos`, 'GET')
   }
 }

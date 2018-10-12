@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import VenueList from './VenueList';
-import { slide as Menu } from 'react-burger-menu'
+import { stack as Menu } from 'react-burger-menu'
+
 
 export default class Sidebar extends Component {
   constructor() {
@@ -10,7 +11,19 @@ export default class Sidebar extends Component {
       venues: []
     };
   }
-
+  handleKeyDown(e) {
+    const { cursor, result } = this.state
+    // arrow up/down button should select next/previous list element
+    if (e.keyCode === 38 && cursor > 0) {
+      this.setState( prevState => ({
+        cursor: prevState.cursor - 1
+      }))
+    } else if (e.keyCode === 40 && cursor < result.length - 1) {
+      this.setState( prevState => ({
+        cursor: prevState.cursor + 1
+      }))
+    }
+  }
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
   // if query is empty, show all, else return only the ones that match the query
   filterVenues = () => {
@@ -47,10 +60,12 @@ export default class Sidebar extends Component {
   render() {
     return (
       <Menu>
+        <h2 className="title">All the Ramen</h2>
         <input 
           type={'search'} 
           aria-label="search by restaurant name"
           id={'search'} 
+          role="searchbox"
           placeholder={'Filter restaurants'}
           onChange={this.handleChange}/>
         <VenueList 

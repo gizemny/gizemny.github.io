@@ -1,120 +1,16 @@
+*{
+  font-family: 'K2D', sans-serif;
+}
+
 .App {
   text-align: center;
   height: 100vh;
-  /* width: 600vw; */
   display: flex;
   font-size: 15px;
-  /* flex: 1; */
 }
-
-/* .sideBar {
-  background: #444;
-  color: #eee;
-  padding-top:4em;
-  overflow-y: scroll;
-}
-
-input#search {
-  width: 0;
-  padding: 12px 20px;
-  padding-top: 6.5em;
-  display: none;
-}
-
-.venueList {
-  width: 0;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background: #444;
-  color: #eee;
-}
-
-.listItem {
-  border: 1px solid lightgrey;
-  display: flex;
-  align-items: center;
-  padding: 3px;
-  margin: 5px;
-  cursor: pointer;
-}
-
-.listItem:hover {
-  background-color: #1a4876;
-}
-
-.hamburgerCheckbox {
-  position: absolute;
-  opacity: 0;
-}
-
-.hamburgerLabel {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  z-index: 1;
-  display: block;
-  width: 42px;
-  height: 42px;
-  font: 42px/42px fontawesome;
-  text-align: center;
-  color: #444;
-  cursor: pointer;
-}
-
-.hamburgerCheckbox:checked~.hamburgerLabel:before {
-  content: '\f00d';
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  display: block;
-  width: 42px;
-  height: 42px;
-  font: 42px/42px fontawesome;
-  text-align: center;
-  color: #eee;
-
-}
-
-.hamburgerCheckbox:checked~.venueList {
-  width: 100%;
-  transition: all .3s;
-}
-
-.hamburgerCheckbox:checked~.sideBar {
-  width: 100%;
-}
-
-.hamburgerCheckbox:checked~input#search {
-  width: 100%;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  padding: 0px 10px;
-  margin: 5px 0;
-  display: inline;
-  overflow: scroll;
-} */
 
 .gm-style-mtc {
   display: none;
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  /* .hamburgerCheckbox:checked~.venueList {
-    width: 600px;
-    transition: all .3s;
-  }
-  .listItem {
-    width: 100%;
-  }
-  .sideBar {
-    overflow: hidden
-  } */
 }
 
 input#search {
@@ -127,8 +23,13 @@ input#search {
    0 0 16px rgba(0, 0, 0, 0.1);
    padding: 15px;
    background: rgba(255, 255, 255, 0.89);
-   margin: 60px 30px 0;
+   margin: 10px 30px 0;
    width: 80%;
+}
+
+.title {
+  padding: 40px 0 0 30px;
+  color: #fff;
 }
 
 .venueList {
@@ -150,6 +51,9 @@ input#search {
   cursor: pointer;
 }
 
+.listItem:hover {
+  background-color: #1a4876;
+}
 /* ------- */
 /*-----burger menu, reference https://www.npmjs.com/package/react-burger-menu ------*/
 .bm-burger-button {
@@ -164,7 +68,6 @@ input#search {
   background: #3b3e49;
 }
 
-
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 25px;
@@ -173,7 +76,6 @@ input#search {
   padding: 15px;
 
 }
-
 
 /* Color/shape of close button cross */
 .bm-cross {
@@ -185,7 +87,6 @@ input#search {
   font-size: 1.3em;
 }
 
-
 .bm-item-list {
   margin: auto;
   text-align: left;
@@ -195,4 +96,17 @@ input#search {
 .bm-item {
   display: inline-block;
   margin: 0px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  /* .hamburgerCheckbox:checked~.venueList {
+    width: 600px;
+    transition: all .3s;
+  }
+  .listItem {
+    width: 100%;
+  }
+  .sideBar {
+    overflow: hidden
+  } */
 }

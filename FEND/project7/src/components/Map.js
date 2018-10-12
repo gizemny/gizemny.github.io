@@ -15,31 +15,35 @@ const MyMapComponent = withScriptjs(
       center={{
         lat: parseFloat(props.center.lat),
         lng: parseFloat(props.center.lng)
-      }}>
+      }}
+      role="application"
+      aria-label="map">
 
       {props.markers && 
         props.markers.filter(marker => marker.isVisible).map((marker, idx, arr) => {
           const venueInfo = props.venues.find(venue => venue.id === marker.id);
-
+          const address = `${venueInfo.canonicalUrl}`;
           return (
-              <Marker 
-                key={idx} 
-                position={{ lat: marker.lat, lng: marker.lng }}
-                onClick={() => props.onMarkerClick(marker)}
-                animation = {arr.length === 1 ? google.maps.Animation.BOUNCE : google.maps.Animation.DROP}>
-              {marker.showingInfoWindow && 
-                venueInfo.bestPhoto && (
-                <InfoWindow>
-                  {/* Use fragment to house children without adding extra nodes*/}
-                  <>
-                    <img alt="venue" src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`}/>
-                    <p>{venueInfo.name}</p>
-                    <p>{venueInfo.likes.count} people liked this place</p>
-                  </>
-                </InfoWindow>
-              )}    
-              </Marker>
-            )
+            <Marker 
+              key={idx} 
+              position={{ lat: marker.lat, lng: marker.lng }}
+              onClick={() => props.onMarkerClick(marker)}
+              animation = {arr.length === 1 ? google.maps.Animation.BOUNCE : google.maps.Animation.DROP}
+              tabIndex="0">
+            {marker.showingInfoWindow && 
+              venueInfo.bestPhoto && (
+              <InfoWindow>
+                {/* Use fragment to house children without adding extra nodes*/}
+                <React.Fragment>
+                  <h3>{venueInfo.name}</h3>
+                  <img alt="venue" src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`}/>
+                  <p>{venueInfo.likes.count} people liked this place</p>
+                  <p><a href={address} target="_blank" aria-label="View on Foursquare" rel="noopener noreferrer">View on Foursquare</a></p>
+                </React.Fragment>
+              </InfoWindow>
+            )}    
+            </Marker>
+          )
         })
       }
     </GoogleMap>
