@@ -39,19 +39,29 @@ class Helper {
     let requestData={
       method, 
       headers: Helper.headers()
-  };
+    };
 
-  return fetch(`${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(
-    urlPrams
-    )}`, 
-    requestData
-    ).then(res => res.json())
-    .catch(error => {
-      alert(
-        'Encountered an error while trying to fetch data from Foursquare' + error
-      );
-    });
-  }
+    return fetch(`${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(
+      urlPrams
+      )}`, 
+      requestData)
+      // check the API results for quota code 429
+      .then(res => {
+        console.log(res.status)
+          if (res.status === 429) {
+            return Promise.reject(new Error('Foursquare daily quota reached. Try again tomorrow.'));
+          } else {
+            return res;
+          }
+        })
+        .then(res => res.json())
+      // .then(res => res.json())
+      // .catch(error => {
+      //   alert(
+      //     'Encountered an error while trying to fetch data from Foursquare' + error.message
+      //   );
+      // });
+    }
 }
 
 export default class SquareAPI {

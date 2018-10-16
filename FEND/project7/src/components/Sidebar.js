@@ -25,7 +25,7 @@ export default class Sidebar extends Component {
     }
   }
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
-  // if query is empty, show all, else return only the ones that match the query
+  // if user enters anything into query, find the venues that match query; else return al venues.
   filterVenues = () => {
     if (this.state.query.trim() !== '') {      
       const venues = this.props.venues.filter(venue => 
@@ -63,12 +63,13 @@ export default class Sidebar extends Component {
         <h2 className="title">All the Ramen</h2>
         <input 
           type={'search'} 
-          aria-label="search by restaurant name"
+          aria-label="Search for restaurant name"
           id={'search'} 
           role="searchbox"
           placeholder={'Filter restaurants'}
           onChange={this.handleChange}/>
-        <VenueList 
+        <VenueList
+          aria-label="Venue List"
           {...this.props} 
           venues={this.filterVenues()}
           onListItemClick={this.props.onListItemClick}/>

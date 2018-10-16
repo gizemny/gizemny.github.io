@@ -21,6 +21,7 @@ class App extends Component {
       markers: [],
       center:[],
       zoom: 12, 
+      markerAnimate: false,
       updateFiltered: obj => {
         this.setState(obj);
       }
@@ -49,7 +50,8 @@ class App extends Component {
   // map through markers and close infowindows
   closeMarkers = () => {
     const markers = this.state.markers.map(marker => {
-      marker.showingInfoWindow = false;
+      marker.showingInfoWindow=false;
+      marker.markerAnimate=false;
       return marker;
     });
     // create a copy of object to store updated values
@@ -67,14 +69,23 @@ class App extends Component {
   onMarkerClick = marker => {
     this.closeMarkers();
     marker.showingInfoWindow = true;
+    marker.markerAnimate = true;
     this.setState({markers: Object.assign(this.state.markers, marker)});
     const venue = this.state.venues.find(venue => venue.id === marker.id)  
     console.log(venue);
+    console.log('This is ' + venue.name)
     // get details using foursquare api helper function
     SquareAPI.getVenueDetails(marker.id).then(res => {
       const newVenue = Object.assign(venue, res.response.venue);
       this.setState({venues: Object.assign(this.state.venues, newVenue)});
+    }).catch(error => {
+      window.alert('Encountered an error while trying to fetch info for this venue: ' + error.message);
+      console.log(error);
     });
+  };
+  
+  onMapClick = () => {
+    this.closeMarkers();
   };
   
   render() {
@@ -83,7 +94,9 @@ class App extends Component {
       <ErrorBoundary>
         <div className="App">
           <Sidebar {...this.state} onListItemClick={this.onListItemClick}/>
-          <Map className="main" {...this.state} onMarkerClick={this.onMarkerClick}
+          <Map className="main" {...this.state} 
+               onMarkerClick={this.onMarkerClick}
+               onMapClick={this.onMapClick}
           />
         </div>
       </ErrorBoundary>

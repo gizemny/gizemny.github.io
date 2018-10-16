@@ -1,4 +1,3 @@
-/* global google */
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 import MapStyle from './MapStyle';
@@ -17,10 +16,12 @@ const MyMapComponent = withScriptjs(
         lng: parseFloat(props.center.lng)
       }}
       role="application"
-      aria-label="map">
+      aria-label="map"
+      tabIndex="-1"
+      onClick={() => props.onMapClick()}>
 
       {props.markers && 
-        props.markers.filter(marker => marker.isVisible).map((marker, idx, arr) => {
+        props.markers.filter(marker => marker.isVisible).map((marker, idx) => {
           const venueInfo = props.venues.find(venue => venue.id === marker.id);
           const address = `${venueInfo.canonicalUrl}`;
           return (
@@ -28,7 +29,8 @@ const MyMapComponent = withScriptjs(
               key={idx} 
               position={{ lat: marker.lat, lng: marker.lng }}
               onClick={() => props.onMarkerClick(marker)}
-              animation = {arr.length === 1 ? google.maps.Animation.BOUNCE : google.maps.Animation.DROP}
+              animation={marker.markerAnimate === true ? 1 : null}
+              // icon= {marker.icon}
               tabIndex="0">
             {marker.showingInfoWindow && 
               venueInfo.bestPhoto && (
