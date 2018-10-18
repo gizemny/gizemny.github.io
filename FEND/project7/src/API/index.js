@@ -9,8 +9,8 @@ class Helper {
 
   static auth() {
     const keys={
-      client_id: 'FZJEIKTWA0SBSEHBRPXWEEK0QDQ0YPRXW0AWMDVQR4JWQE3V',
-      client_secret: 'E0BY1JJE12A0I2DNZL5QIBPGTGQHRRJTBIQSDKJETOGN4KGQ',
+      client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
+      client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
       v:'20180905'
     }
 
@@ -64,7 +64,7 @@ class Helper {
     }
 }
 
-export default class SquareAPI {
+export default class FourSquare {
   static search(urlPrams) {
     return Helper.simpleFetch('/venues/search', 'GET', urlPrams);
   }

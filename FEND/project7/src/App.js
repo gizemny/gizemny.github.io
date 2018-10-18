@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map';
-import SquareAPI from './API/';
+import FourSquare from './API/';
 import Sidebar from './components/Sidebar';
 import ErrorBoundary from './components/ErrorBoundary';
 // import foursquare from 'react-foursquare';
+// console.log(process.env.REACT_APP_WEATHER_API_KEY)
 
 const params = {
   near: 'Austin, TX',
@@ -30,7 +31,7 @@ class App extends Component {
  
   componentDidMount() {
     //fetch based on parameters & set results as states 
-    SquareAPI.search(params)
+    FourSquare.search(params)
     .then(results => {
       const {venues} = results.response;
       const {center} = results.response.geocode.feature.geometry;
@@ -75,7 +76,7 @@ class App extends Component {
     console.log(venue);
     console.log('This is ' + venue.name)
     // get details using foursquare api helper function
-    SquareAPI.getVenueDetails(marker.id).then(res => {
+    FourSquare.getVenueDetails(marker.id).then(res => {
       const newVenue = Object.assign(venue, res.response.venue);
       this.setState({venues: Object.assign(this.state.venues, newVenue)});
     }).catch(error => {
