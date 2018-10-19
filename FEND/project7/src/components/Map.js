@@ -4,7 +4,7 @@ import MapStyle from './MapStyle';
 // import activePin from './activePin.png';
 
 // https://tomchentw.github.io/react-google-maps/
-const MyMapComponent = withScriptjs(
+const MapComponent = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap 
       defaultZoom={8} 
@@ -24,6 +24,9 @@ const MyMapComponent = withScriptjs(
         props.markers.filter(marker => marker.isVisible).map((marker, idx) => {
           const venueInfo = props.venues.find(venue => venue.id === marker.id);
           const address = `${venueInfo.canonicalUrl}`;
+          let restaurantImg = venueInfo.bestPhoto ? 
+            `${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`
+           : '';
           return (
             <Marker 
               key={idx} 
@@ -38,7 +41,7 @@ const MyMapComponent = withScriptjs(
                 {/* Use fragment to house children without adding extra nodes*/}
                 <React.Fragment>
                   <h3>{venueInfo.name}</h3>
-                  <img alt="venue" src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`}/>
+                  <img alt="venue" src={restaurantImg}/>
                   <p>{venueInfo.likes.count} people liked this place</p>
                   <p><a href={address} target="_blank" aria-label="View on Foursquare" rel="noopener noreferrer">View on Foursquare</a></p>
                 </React.Fragment>
@@ -55,7 +58,7 @@ const MyMapComponent = withScriptjs(
 export default class Map extends Component {
   render() {
     return (
-      <MyMapComponent
+      <MapComponent
       {...this.props}
         isMarkerShown
         googleMapURL= {`${process.env.REACT_APP_GOOGLE_MAP_KEY}`}

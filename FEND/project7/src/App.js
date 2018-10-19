@@ -23,7 +23,7 @@ class App extends Component {
       center:[],
       zoom: 12, 
       markerAnimate: false,
-      updateFiltered: obj => {
+      updateVisible: obj => {
         this.setState(obj);
       }
     };
