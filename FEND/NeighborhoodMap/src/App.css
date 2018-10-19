@@ -1,0 +1,112 @@
+*{
+  font-family: 'K2D', sans-serif;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  font-size: 15px;
+}
+
+.gm-style-mtc {
+  display: none;
+}
+
+input#search {
+   border: 5px solid white;
+   -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
+   0 0 16px rgba(0, 0, 0, 0.1);
+   -moz-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
+   0 0 16px rgba(0, 0, 0, 0.1);
+   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1),
+   0 0 16px rgba(0, 0, 0, 0.1);
+   padding: 15px;
+   background: rgba(255, 255, 255, 0.89);
+   margin: 10px 30px 0;
+   width: 80%;
+}
+
+.title {
+  padding: 40px 0 0 30px;
+  color: #fff;
+}
+
+.venueList {
+  /* width: 0; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  list-style: none;
+  margin: 5px;
+  padding: 20px;
+  color: #fff;
+}
+
+.listItem {
+  border: 1px solid lightgrey;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  background-color: #1a4876;
+}
+/* ------- */
+/*-----burger menu, reference https://www.npmjs.com/package/react-burger-menu ------*/
+.bm-burger-button {
+  position: fixed;
+  width: 35px;
+  height: 30px;
+  left: 30px;
+  top: 3vh;
+}
+
+.bm-burger-bars {
+  background: #3b3e49;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 25px;
+  width: 25px;
+  margin: 10px 10px 3px 0;
+  padding: 15px;
+
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #fff;
+}
+
+.bm-menu {
+  background: #444;
+  font-size: 1.3em;
+}
+
+.bm-item-list {
+  margin: auto;
+  text-align: left;
+}
+
+/* list item */
+.bm-item {
+  display: inline-block;
+  margin: 0px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  /* .hamburgerCheckbox:checked~.venueList {
+    width: 600px;
+    transition: all .3s;
+  }
+  .listItem {
+    width: 100%;
+  }
+  .sideBar {
+    overflow: hidden
+  } */
+}
