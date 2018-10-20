@@ -6,7 +6,7 @@ import { stack as Menu } from 'react-burger-menu'
 export default class Sidebar extends Component {
   constructor() {
     super();
-    // this.handleKeyDown = this.handleKeyDown.bind(this)
+    // this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
       query: '',
       venues: []
@@ -15,6 +15,7 @@ export default class Sidebar extends Component {
     };
   }
  
+  //when implementing dropdown menu; tab through li
   // handleKeyDown(e) {
   //   const { cursor, result } = this.state;
   //   // arrow up/down button should select next/previous list element

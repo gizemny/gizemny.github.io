@@ -98,6 +98,17 @@ input#search {
   margin: 0px;
 }
 
+
+/* Modal */
+.modalClose{
+position: absolute;
+top:0;
+right:0;
+}
+
+.modalText{
+  text-align: center;
+}
 @media (min-width: 320px) and (max-width: 480px) {
   /* .hamburgerCheckbox:checked~.venueList {
     width: 600px;

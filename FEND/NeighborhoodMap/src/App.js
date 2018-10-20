@@ -4,6 +4,8 @@ import Map from './components/Map';
 import FourSquare from './API/';
 import Sidebar from './components/Sidebar';
 import ErrorBoundary from './components/ErrorBoundary';
+import Modal from 'react-modal';
+Modal.setAppElement('body');
 // import foursquare from 'react-foursquare';
 // console.log(process.env.REACT_APP_WEATHER_API_KEY)
 
@@ -11,6 +13,17 @@ const params = {
   near: 'Austin, TX',
   query: 'ramen',
   limit: 10
+};
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
 };
 
 class App extends Component {
@@ -23,12 +36,22 @@ class App extends Component {
       center:[],
       zoom: 12, 
       markerAnimate: false,
+      modalIsOpen: true,
       updateVisible: obj => {
         this.setState(obj);
       }
     };
+    //  this.openModal = this.openModal.bind(this);
+    //  this.afterOpenModal = this.afterOpenModal.bind(this);
+     this.closeModal = this.closeModal.bind(this);
   }
- 
+
+  closeModal() {
+    this.setState({
+      modalIsOpen: false
+    });
+  }
+  
   componentDidMount() {
     //fetch based on parameters & set results as states 
     FourSquare.search(params)
@@ -91,8 +114,23 @@ class App extends Component {
   
   render() {
     return (
-      // get states using spread operator
       <ErrorBoundary>
+        <Modal
+          appElement={document.getElementById('app')}
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <button className="modalClose" onClick={this.closeModal}>close</button>
+          <div className="modalText">
+            {/* <h1 ref={subtitle => this.subtitle = subtitle}>Discover</h1> */}
+            <h2>Discover Austin 's yummy <span role="img" aria-label="ramen">🍜</span> scene</h2>
+          </div>
+        </Modal>
+        {/*get states using spread operator */}
+
         <div className="App">
           <Sidebar {...this.state} onListItemClick={this.onListItemClick}/>
           <Map className="main" {...this.state} 
